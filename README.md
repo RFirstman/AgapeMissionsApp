@@ -15,7 +15,7 @@ Once you have that installed, clone this repository to somewhere on your compute
 install the project dependencies using NPM (which was added by Node.js).
 
 ```
-git clone
+git clone https://github.com/RFirstman/AgapeMissionsApp.git
 cd AgapeMissionsApp/
 npm install
 ```
