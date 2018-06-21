@@ -23,6 +23,7 @@ export default styles = StyleSheet.create({
     subTitle: {
         fontSize: 20,
         alignSelf: "center",
+        textAlign: "center",
         marginBottom: 20
     },
     text: {

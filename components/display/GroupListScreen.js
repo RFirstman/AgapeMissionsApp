@@ -14,7 +14,7 @@ class GroupListScreen extends Component {
                     <Text style={styles.title}>Group List</Text>
                     <Text style={styles.text}>The list of groups will go here</Text>
                     <Button
-                        title="Group 1"
+                        title="Group 5"
                         onPress={() => this.props.navigation.navigate("Group")}
                     />
                 </View>
