@@ -1,0 +1,11 @@
+{
+  "name": "agape_missions_server",
+  "version": "1.0.0",
+  "description": "Backend end for the Agape Missions app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Firstman",
+  "license": "ISC"
+}
