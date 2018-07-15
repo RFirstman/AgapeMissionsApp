@@ -21,6 +21,15 @@ app.get("/health", (req, res) => {
     res.send("Everything's looking good over here!");
 });
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("../client/build"));
+
+    const path = require("path");
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"))
+    })
+}
+
 port = process.env.PORT || 8000;
 
 app.listen(port, () => {
