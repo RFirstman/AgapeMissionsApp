@@ -5,12 +5,16 @@ var express = require("express"),
     config = require("./config/");
 
 require("./models/User");
+require("./models/JobSite");
+require("./models/Group");
 
 mongoose.connect(config.mongo_uri);
 
 app.use(bodyParser.json());
 
 require("./routes/userRoutes")(app);
+require("./routes/groupRoutes")(app);
+require("./routes/jobSiteRoutes")(app);
 
 app.get("/health", (req, res) => {
     res.statusCode = 200;
