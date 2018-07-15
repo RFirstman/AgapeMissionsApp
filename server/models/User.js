@@ -7,4 +7,10 @@ const userSchema = new Schema({
     group: { type: Number, required: true }
 });
 
+userSchema.methods.fullName = function fullName() {
+    return this.firstName + " " + this.lastName;
+}
+
 mongoose.model("users", userSchema);
+
+module.exports = userSchema;

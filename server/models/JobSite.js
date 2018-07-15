@@ -23,3 +23,5 @@ const jobSiteSchema = new Schema({
 
 
 mongoose.model("jobSites", jobSiteSchema);
+
+module.exports = jobSiteSchema;

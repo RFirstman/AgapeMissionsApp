@@ -5,12 +5,12 @@ const UserModel = mongoose.model("users");
 const JobSiteModel = mongoose.model("jobSites");
 
 module.exports = app => {
-    app.get("/groups", async (req, res) => {
+    app.get("/api/groups", async (req, res) => {
         const groups = await GroupModel.find();
         res.send(JSON.stringify(groups));
     });
 
-    app.get("/groups/:number", (req, res, next) => {
+    app.get("/api/groups/:number", (req, res, next) => {
         const groupNumber = req.params.number;
         GroupModel.find({ number: groupNumber }, (group, err) => {
             if (err) {
@@ -21,7 +21,7 @@ module.exports = app => {
         })
     });
 
-    app.post("/groups", async (req, res, next) => {
+    app.post("/api/groups", async (req, res, next) => {
         let { number, userIds, jobSiteIds } = req.body;
 
         try {
@@ -48,7 +48,7 @@ module.exports = app => {
     });
 
     // Update group
-    app.put("/groups/:id", async (req, res, next) => {
+    app.put("/api/groups/:id", async (req, res, next) => {
         let groupId = req.params.id;
         let { number, userIds, jobSiteIds } = req.body;
 
