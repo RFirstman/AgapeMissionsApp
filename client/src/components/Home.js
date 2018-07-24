@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Button from '@material-ui/core/Button';
-import Grid from "@material-ui/core/Grid";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
@@ -19,17 +18,13 @@ class Home extends Component {
                     <img src={logo} className="App-logo" alt="logo" />
                     {/* <h1 className="App-title">Agape Missions</h1> */}
                 </header>
-                <Grid container justify="center">
-                    {
-                        buttonConfigs.map(buttonConfig => (
-                            <Grid key={buttonConfig.text} item>
-                                <Link to={buttonConfig.route}>
-                                    <Button>{buttonConfig.text}</Button>
-                                </Link>
-                            </Grid>
-                        ))
-                    }
-                </Grid>
+                {
+                    buttonConfigs.map(buttonConfig => (
+                        <Link to={buttonConfig.route}>
+                            <Button>{buttonConfig.text}</Button>
+                        </Link>
+                    ))
+                }
                 <Link to="/admin"><Button>Administrator Access</Button></Link>
             </div>
         );

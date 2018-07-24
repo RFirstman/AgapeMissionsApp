@@ -1,22 +1,22 @@
 /* Used for admnistrator login */
 import React from "react";
 import { Field, reduxForm } from 'redux-form'
-import { Grid } from "@material-ui/core";
+import { Grid, Row, Button } from "react-bootstrap";
 
 function AdminLoginForm(props) {
     const { handleSubmit } = props;
     return (
-        <Grid container justify="center">
+        <Grid>
             <form onSubmit={handleSubmit}>
-                <div>
+                <Row>
                     <label htmlFor="email">Email</label>
                     <Field name="email" component="input" type="text" />
-                </div>
-                <div>
+                </Row>
+                <Row>
                     <label htmlFor="password">Password</label>
                     <Field name="password" component="input" type="password" />
-                </div>
-                <button type="submit">Submit</button>
+                </Row>
+                <Button type="submit">Submit</Button>
             </form>
         </Grid>
     );

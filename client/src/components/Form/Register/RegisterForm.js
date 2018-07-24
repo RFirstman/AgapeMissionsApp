@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 import validate from "./validate";
@@ -29,7 +29,7 @@ class RegisterForm extends Component {
         const { page } = this.state;
 
         return (
-            <Grid container justify="center">
+            <Grid>
                 {page === 1 && <FirstPage onSubmit={this.nextPage} />}
                 {page === 2 && <SecondPage onSubmit={this.nextPage} previousPage={this.previousPage} />}
                 {page === 3 && <ThirdPage onSubmit={this.nextPage} previousPage={this.previousPage} />}

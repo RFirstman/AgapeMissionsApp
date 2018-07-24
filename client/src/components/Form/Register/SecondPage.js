@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderField from '../renderField'
-import { Grid } from '@material-ui/core';
+import { Row } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 
 import validate from "./validate";
@@ -20,25 +20,25 @@ const SecondPage = (props) => {
     const { handleSubmit, previousPage } = props
     return (
         <form onSubmit={handleSubmit}>
-            <Grid item>
+            <Row>
                 <Field name="church" type="text" component={renderField} label="Church" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="birthDate" type="date" component={renderDatePicker} label="Birth Date" />
-            </Grid>
+            </Row>
             <div>
                 <label>Sex</label>
-                <Grid item>
+                <Row>
                     <label><Field name="sex" component="input" type="radio" value="male" /> Male</label>
                     <label><Field name="sex" component="input" type="radio" value="female" /> Female</label>
                     <label><Field name="sex" component="input" type="radio" value="other" />Other</label>
                     <Field name="sex" component={renderError} />
-                </Grid>
+                </Row>
             </div>
-            <Grid item>
+            <Row>
                 <button type="button" className="previous" onClick={previousPage}>Previous</button>
                 <button type="submit" className="next">Next</button>
-            </Grid>
+            </Row>
         </form>
     )
 }

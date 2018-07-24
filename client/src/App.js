@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RegisterPage from './components/Container/RegisterPage';
 import { createStore, applyMiddleware } from 'redux'
@@ -12,23 +11,6 @@ import './App.css';
 import LunchOrderPage from './components/Container/LunchOrderPage';
 import GroupPage from './components/Container/GroupPage';
 import AdminPage from "./components/Container/AdminPage";
-
-/* const theme = createMuiTheme({
-    palette: {
-        primary: {
-            light: '#824e2d',
-            main: '#522503',
-            dark: '#2e0000',
-            contrastText: '#fff',
-        },
-        secondary: {
-            light: '#fefefe',
-            main: '#cbcbcb',
-            dark: '#9a9a9a',
-            contrastText: '#000',
-        },
-    },
-}); */
 
 const store = createStore(
     reducers,

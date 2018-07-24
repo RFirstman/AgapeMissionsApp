@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Grid } from '@material-ui/core';
+import { Row } from 'react-bootstrap';
 
 import validate from "./validate";
 import renderField from '../renderField';
@@ -9,20 +9,20 @@ const FirstPage = (props) => {
     const { handleSubmit } = props
     return (
         <form onSubmit={handleSubmit}>
-            <Grid item>
+            <Row>
                 <Field name="firstName" type="text" component={renderField} label="First Name" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="lastName" type="text" component={renderField} label="Last Name" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="email" type="email" component={renderField} label="Email" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <div>
                     <button type="submit" className="next">Next</button>
                 </div>
-            </Grid>
+            </Row>
         </form>
     )
 }

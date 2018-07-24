@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import renderField from '../renderField'
-import { Grid } from '@material-ui/core';
+import { Row } from 'react-bootstrap';
 
 import validate from "./validate";
 
@@ -9,22 +9,22 @@ const ThirdPage = (props) => {
     const { handleSubmit, previousPage } = props
     return (
         <form onSubmit={handleSubmit}>
-            <Grid item>
+            <Row>
                 <Field name="mailingAddress" type="text" component={renderField} label="mailingAddress" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="city" type="text" component={renderField} label="City" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="state" type="text" component={renderField} label="State" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <Field name="zipCode" type="text" component={renderField} label="Zip Code" />
-            </Grid>
-            <Grid item>
+            </Row>
+            <Row>
                 <button type="button" className="previous" onClick={previousPage}>Previous</button>
                 <button type="submit" className="next">Next</button>
-            </Grid>
+            </Row>
         </form>
     )
 }
