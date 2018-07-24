@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RegisterPage from './components/Container/RegisterPage';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import reduxThunk from "redux-thunk";
 
-import reducer from "./reducers";
+import reducers from "./reducers";
 import Home from "./components/Home";
 import './App.css';
 import LunchOrderPage from './components/Container/LunchOrderPage';
 import GroupPage from './components/Container/GroupPage';
+import AdminPage from "./components/Container/AdminPage";
 
-const theme = createMuiTheme({
+/* const theme = createMuiTheme({
     palette: {
         primary: {
             light: '#824e2d',
@@ -26,10 +28,12 @@ const theme = createMuiTheme({
             contrastText: '#000',
         },
     },
-});
+}); */
 
 const store = createStore(
-    reducer,
+    reducers,
+    {},
+    applyMiddleware(reduxThunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
@@ -37,16 +41,15 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <MuiThemeProvider theme={theme}>
-                    <BrowserRouter>
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/register" component={RegisterPage} />
-                            <Route exact path="/lunchOrder" component={LunchOrderPage} />
-                            <Route exact path="/groups" component={GroupPage} />
-                        </Switch>
-                    </BrowserRouter>
-                </MuiThemeProvider>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/register" component={RegisterPage} />
+                        <Route exact path="/lunchOrder" component={LunchOrderPage} />
+                        <Route exact path="/groups" component={GroupPage} />
+                        <Route path="/admin" component={AdminPage} />
+                    </Switch>
+                </BrowserRouter>
             </Provider>
         );
     }

@@ -7,14 +7,17 @@ var express = require("express"),
 require("./models/User");
 require("./models/JobSite");
 require("./models/Group");
+require("./models/Admin");
 
 mongoose.connect(config.mongo_uri);
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 require("./routes/userRoutes")(app);
 require("./routes/groupRoutes")(app);
 require("./routes/jobSiteRoutes")(app);
+require("./routes/adminRoutes")(app);
 
 app.get("/health", (req, res) => {
     res.statusCode = 200;

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderField from '../renderField'
 import { Grid } from '@material-ui/core';
 
 import validate from "./validate";
+import renderField from '../renderField';
 
 const FirstPage = (props) => {
     const { handleSubmit } = props

@@ -11,18 +11,18 @@ import './index.css';
 const rootEl = document.getElementById('root');
 
 ReactDOM.render(
-  <App />,
-  rootEl
+    <App />,
+    rootEl
 )
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default
-    ReactDOM.render(
-      <NextApp />,
-      rootEl
-    )
-  })
+    module.hot.accept('./App', () => {
+        const NextApp = require('./App').default
+        ReactDOM.render(
+            <NextApp />,
+            rootEl
+        )
+    })
 }
 
 registerServiceWorker();

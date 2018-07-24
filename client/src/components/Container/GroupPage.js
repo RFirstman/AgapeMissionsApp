@@ -39,7 +39,7 @@ class GroupPage extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Groups</h1>
                 </header>
-                {this.renderGroups()} 
+                {this.renderGroups()}
             </div>
         );
     }

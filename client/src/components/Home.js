@@ -9,9 +9,9 @@ import "../App.css";
 class Home extends Component {
     render() {
         const buttonConfigs = [
-            { text: "Register", route: "/register" }, 
-            { text: 'Lunch Order', route:"/lunchorder" }, 
-            { text: 'Groups', route:"/groups" }, 
+            { text: "Register", route: "/register" },
+            { text: 'Lunch Order', route: "/lunchorder" },
+            { text: 'Groups', route: "/groups" },
         ];
         return (
             <div className="App">
@@ -30,6 +30,7 @@ class Home extends Component {
                         ))
                     }
                 </Grid>
+                <Link to="/admin"><Button>Administrator Access</Button></Link>
             </div>
         );
     }
