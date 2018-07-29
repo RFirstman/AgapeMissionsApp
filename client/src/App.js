@@ -11,6 +11,7 @@ import './App.css';
 import LunchOrderPage from './components/Container/LunchOrderPage';
 import GroupPage from './components/Container/GroupPage';
 import AdminPage from "./components/Container/AdminPage";
+import Header from './components/Header';
 
 const store = createStore(
     reducers,
@@ -24,13 +25,16 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/register" component={RegisterPage} />
-                        <Route exact path="/lunchOrder" component={LunchOrderPage} />
-                        <Route exact path="/groups" component={GroupPage} />
-                        <Route path="/admin" component={AdminPage} />
-                    </Switch>
+                    <div className="App">
+                        <Header />
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/register" component={RegisterPage} />
+                            <Route exact path="/lunchOrder" component={LunchOrderPage} />
+                            <Route exact path="/groups" component={GroupPage} />
+                            <Route path="/admin" component={AdminPage} />
+                        </Switch>
+                    </div>
                 </BrowserRouter>
             </Provider>
         );

@@ -1,15 +1,19 @@
+html, body, #app, #app>div {
+  height: 100%
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
-  height: 160px;
+  height: 10%;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 15%;
   padding: 20px;
   color: #fefefe;
 }
