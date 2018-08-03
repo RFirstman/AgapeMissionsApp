@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 import AdminLoginForm from "../Form/AdminLoginForm";
 import * as actions from "../../reducers/actions";
@@ -12,7 +13,7 @@ class AdminPage extends Component {
             return (
                 <div>
                     <GroupForm />
-                    <button onClick={this.props.adminLogout}>Log Out</button>
+                    <Button onClick={this.props.adminLogout}>Log Out</Button>
                 </div>);
         }
         return <AdminLoginForm onSubmit={this.props.adminLogin} />
@@ -24,7 +25,6 @@ class AdminPage extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Edit Groups</h1>
                 </header>
-                <Link to="/">Home</Link>
                 {this.renderContent()}
             </div>
         );

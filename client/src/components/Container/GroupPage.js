@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
 import axios from "axios";
+import { Panel } from "react-bootstrap";
 
 class GroupPage extends Component {
     constructor(props) {
@@ -21,11 +22,19 @@ class GroupPage extends Component {
             return this.state.groups.map(group => {
                 return (
                     <div>
-                        <h2>Group {group.number}</h2>
-                        Members:
-                        <ul>
-                            {group.users.map(user => <li>{user.firstName + " " + user.lastName}</li>)}
-                        </ul>
+                        <Panel>
+                            <Panel.Heading>
+                                <Panel.Title>
+                                    <h3>Group {group.number}</h3>
+                                </Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body>
+                                Members:
+                                <ul>
+                                    {group.users.map(user => <li>{user.firstName + " " + user.lastName}</li>)}
+                                </ul>
+                            </Panel.Body>
+                        </Panel>
                     </div>
                 );
             })
@@ -39,7 +48,9 @@ class GroupPage extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Groups</h1>
                 </header>
-                {this.renderGroups()}
+                <div className="container">
+                    {this.renderGroups()}
+                </div>
             </div>
         );
     }

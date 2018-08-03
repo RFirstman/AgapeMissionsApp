@@ -36,3 +36,8 @@ html, body, #app, #app>div {
   background-color: #fefefe;
   color: #522503;
 }
+
+.form-container {
+  width: 33%;
+  margin: auto;
+}

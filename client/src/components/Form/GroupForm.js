@@ -1,23 +1,24 @@
 import React from "react";
-import { Field, FieldArray, reduxForm } from 'redux-form'
+import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import renderField from "./renderField";
+import { Button, Panel } from "react-bootstrap";
 
 const renderMembers = ({ fields, meta: { error, submitFailed } }) => (
-    <ul>
-        <li>
-            <button type="button" onClick={() => fields.push({})}>
+    <div>
+        <div>
+            <Button type="button" onClick={() => fields.push({})}>
                 Add Member
-            </button>
+            </Button>
             {submitFailed && error && <span>{error}</span>}
-        </li>
+        </div>
         {fields.map((member, index) => (
-            <li key={index}>
-                <button
+            <div key={index}>
+                <Button
                     type="button"
-                    title="Remove Member"
-                    onClick={() => fields.remove(index)}
-                />
+                    onClick={() => fields.remove(index)}>
+                    Remove Member
+                </Button>
                 <h4>Member #{index + 1}</h4>
                 <Field
                     name={`${member}.firstName`}
@@ -31,25 +32,27 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) => (
                     component={renderField}
                     label="Last Name"
                 />
-            </li>
+            </div>
         ))}
-    </ul>
+    </div>
 );
 
 function GroupForm({ handleSubmit, pristine, reset, submitting }) {
 
     return (
-        <form onSubmit={handleSubmit}>
-            <FieldArray name="members" component={renderMembers} />
-            <div>
-                <button type="submit" disabled={submitting}>
-                Submit
-                </button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>
-                Clear Values
-                </button>
-            </div>
-        </form>
+        <div className="form-container">
+            <form onSubmit={handleSubmit}>
+                <FieldArray name="members" component={renderMembers} />
+                <div style={{marginTop: "15px"}}>
+                    <Button type="submit" disabled={submitting}>
+                    Submit
+                    </Button>
+                    <Button type="button" disabled={pristine || submitting} onClick={reset}>
+                    Clear Values
+                    </Button>
+                </div>
+            </form>
+        </div>
     );
 }
 
