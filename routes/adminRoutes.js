@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const AdminModel = mongoose.model("admins");
+const verifyPassword = require("../utils/verifyPassword")
 
 module.exports = app => {
     app.post("/api/admin/login", async (req, res) => {
@@ -9,7 +10,7 @@ module.exports = app => {
         AdminModel.findOne({ email }, (err, doc) => {
             if (err) {
                 res.sendStatus(404);
-            } else if (password === doc.password) {
+            } else if (verifyPassword(doc.password, password)) {
                 res.send(doc);
             } else {
                 res.sendStatus(403);
