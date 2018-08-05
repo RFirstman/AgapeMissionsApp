@@ -5,7 +5,7 @@ export default (WrappedForm, heading, title) => {
     class FormWrapper extends Component {
         render() {
             return (
-                <Panel>
+                <Panel bsStyle="primary">
                     {heading &&
                         <Panel.Heading>
                             {title ?

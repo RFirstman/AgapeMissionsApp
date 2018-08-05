@@ -35,7 +35,7 @@ class AdminPage extends Component {
                 <Tabs id="Admin">
                     <Tab eventKey="createGroup" title="Create Group">
                         {/* <GroupForm /> */}
-                        <CreateGroupForm users={this.state.users} />
+                        <CreateGroupForm users={this.state.users} handleSubmit={this.props.addGroup} />
                     </Tab>
                     <Tab eventKey="editGroup" title="Edit Group" disabled>
                     </Tab>

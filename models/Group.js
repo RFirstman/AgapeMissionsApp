@@ -15,4 +15,10 @@ const groupSchema = new Schema({
     }]
 });
 
+groupSchema.statics.findMax = function() {
+    return this.find().sort({"number": -1}).limit(1)
+}
+
 mongoose.model("groups", groupSchema);
+
+const GroupModel = mongoose.model("groups");

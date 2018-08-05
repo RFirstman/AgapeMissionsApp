@@ -8,6 +8,9 @@ export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
 export const ADD_USER = "ADD_USER";
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 export const ADD_USER_FAILURE = "ADD_USER_FAILURE";
+export const ADD_GROUP = "ADD_GROUP";
+export const ADD_GROUP_SUCCESS = "ADD_GROUP_SUCCESS";
+export const ADD_GROUP_FAILURE = "ADD_GROUP_FAILURE";
 export default {
     SUBMIT_REGISTER, 
     SUBMIT_LUNCH_ORDER, 
