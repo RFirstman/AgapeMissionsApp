@@ -9,11 +9,11 @@ function AdminLoginForm(props) {
     const { handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit}>
-            <Row md={6} mdOffset={3}>
+            <Row>
                 {/* <label htmlFor="email">Email</label> */}
                 <Field name="email" component="input" type="text" placeholder="Email" />
             </Row>
-            <Row md={6} mdOffset={3}>
+            <Row>
                 {/* <label htmlFor="password">Password</label> */}
                 <Field name="password" component="input" type="password" placeholder="Password" />
             </Row>

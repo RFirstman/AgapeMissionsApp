@@ -1,30 +1,32 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form'
-import { Grid, Row, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
+
+import FormWrapper from "./FormWrapper";
+import renderField from "./renderField";
 
 function LunchOrderForm(props) {
     const { handleSubmit } = props;
     return (
-        <Grid>
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+            <Col md={6} mdOffset={3}>
                 <Row>
-                    <label htmlFor="name">Name</label>
-                    <Field name="name" component="input" type="text" />
+                    <Field name="name" component={renderField} placeholder="Name" type="text" />
                 </Row>
                 <Row>
-                    <label>Sandwich Type</label>
-                    <Field name="sandwich" component="input" type="text" />
+                    <Field name="sandwich" component={renderField} placeholder="Sandwich" type="text" />
                 </Row>
                 <Row>
-                    <label>Group</label>
-                    <Field name="group" component="input" type="number" />
+                    <Field name="group" component={renderField} placeholder="Group" type="number" />
                 </Row>
                 <Button type="submit">Submit</Button>
-            </form>
-        </Grid>
+            </Col>
+        </form>
     );
 }
 
-export default reduxForm({
+const form = reduxForm({
     form: "lunchOrder"
 })(LunchOrderForm);
+
+export default FormWrapper(form, "Lunch Order");
