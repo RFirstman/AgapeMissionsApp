@@ -12,6 +12,7 @@ import LunchOrderPage from './components/Container/LunchOrderPage';
 import GroupPage from './components/Container/GroupPage';
 import AdminPage from "./components/Container/AdminPage";
 import Header from './components/Header';
+import JobSitePage from './components/Container/JobSitePage';
 
 const store = createStore(
     reducers,
@@ -32,6 +33,7 @@ class App extends Component {
                             <Route exact path="/register" component={RegisterPage} />
                             <Route exact path="/lunchOrder" component={LunchOrderPage} />
                             <Route exact path="/groups" component={GroupPage} />
+                            <Route exact path="/jobSites" component={JobSitePage} />
                             <Route path="/admin" component={AdminPage} />
                         </Switch>
                     </div>

@@ -1,6 +1,6 @@
 import { ADMIN_LOGIN_REQUEST, ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAILURE, ADMIN_LOGOUT } from "./actionTypes";
 
-const initialState = { loggedIn: false, loggingIn: false }
+const initialState = { loggedIn: true, loggingIn: false }
 
 export default function adminReducer(state = initialState, action) {
     switch (action.type) {

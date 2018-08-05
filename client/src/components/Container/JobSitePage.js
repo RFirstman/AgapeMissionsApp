@@ -3,36 +3,50 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Col, Row, Panel } from "react-bootstrap";
 
-class GroupPage extends Component {
+const formatPhone = (number) => {
+    let stripped = number.replace(/[\W_]+/g, "");
+    return `(${stripped.substring(0, 3)}) ${stripped.substring(3, 6)}-${stripped.substring(6, 9)}`
+}
+
+const formatAddress = (address, city, state, zip) => (`${address}, ${city}, ${state} ${zip}`)
+
+class JobSitePage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            groups: []
+            jobSites: []
         }
     }
 
     async componentDidMount() {
-        let groupRes = await axios.get("/api/groups");
-        this.setState({ groups: groupRes.data });
+        let jobSiteRes = await axios.get("/api/jobSites");
+        console.log(jobSiteRes.data)
+        this.setState({ jobSites: jobSiteRes.data });
     }
 
-    renderGroups() {
-        if (this.state.groups) {
-            return this.state.groups.map(group => {
+    renderJobSites() {
+        if (this.state.jobSites) {
+            return this.state.jobSites.map(jobSite => {
+                let { name, state, address, city, phone, zip } = jobSite;
                 return (
                     <Row>
                         <Panel bsStyle="primary">
                             <Panel.Heading>
                                 <Panel.Title>
-                                    <strong>Group {group.number}</strong>
+                                    <strong>{name}</strong>
                                 </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
                                 <Panel>
                                     <Panel.Heading>Members</Panel.Heading>
                                     <Panel.Body>
-                                        {group.users.map(user => <Col md={4}>{user.firstName + " " + user.lastName}</Col>)}
+                                        <Row>
+                                            {formatPhone(phone)}
+                                        </Row>
+                                        <Row>
+                                            {formatAddress(address, city, state, zip)}
+                                        </Row>
                                     </Panel.Body>
                                 </Panel>
                             </Panel.Body>
@@ -47,14 +61,14 @@ class GroupPage extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-title">Groups</h1>
+                    <h1 className="App-title">JobSites</h1>
                 </header>
                 <Col md={8} mdOffset={2}>
-                    {this.renderGroups()}
+                    {this.renderJobSites()}
                 </Col>
             </div>
         );
     }
 }
 
-export default GroupPage;
+export default JobSitePage;

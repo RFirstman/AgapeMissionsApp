@@ -8,6 +8,7 @@ import UserForm from "../Form/UserForm";
 import userService from "../../services/userService";
 import CreateGroupForm from "../Form/CreateGroupForm";
 import ApproveUserForm from "../Form/ApproveUserForm";
+import JobSiteForm from "../Form/JobSiteForm";
 
 class AdminPage extends Component {
     constructor(props) {
@@ -57,7 +58,8 @@ class AdminPage extends Component {
                     </Tab>
                     <Tab eventKey="editGroup" title="Edit Group" disabled>
                     </Tab>
-                    <Tab eventKey="createJobSite" title="Create Job Site" disabled>
+                    <Tab eventKey="createJobSite" title="Create Job Site">
+                        <JobSiteForm onSubmit={this.props.addJobSite}/>
                     </Tab>
                     <Tab eventKey="editJobSite" title="Edit Job Site" disabled>
                     </Tab>
@@ -91,7 +93,7 @@ class AdminPage extends Component {
                     </header>
                 </Row>
                 <Row>
-                    <Col md={6} mdOffset={3}>
+                    <Col md={8} mdOffset={2}>
                         {this.renderContent()}
                     </Col>
                 </Row>

@@ -9,9 +9,10 @@ class Header extends Component {
     renderContent() {
         switch (this.props.admin.loggedIn) {
             case true:
-                return (
-                    <NavItem><Button bsSize="small" onClick={this.props.adminLogout}>Logout</Button></NavItem>
-                );
+                return [
+                    <NavItem eventKey={4} href="/admin">Admin Access</NavItem>,
+                    <NavItem eventKey={3} onClick={this.props.adminLogout}>Logout</NavItem>
+                ];
             default:
                 return (
                     <NavItem eventKey={3} href="/admin">
@@ -23,15 +24,6 @@ class Header extends Component {
 
     render() {
         return (
-            // <nav>
-            //     <div className="nav-wrapper">
-            //         <Link to="/" className="left brand-logo">
-            //             Agape Missions
-            //         </Link>
-            //         <ul className="right">{this.renderContent()}</ul>
-            //     </div>
-            // </nav>
-
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>

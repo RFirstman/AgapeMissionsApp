@@ -2,6 +2,7 @@ import * as actionTypes from "./actionTypes";
 import adminService from "../services/adminService"
 import userService from "../services/userService";
 import groupService from "../services/groupService";
+import { jobSiteService } from "../services/jobSiteService";
 
 export function submitRegistration(values) {
     return {
@@ -63,5 +64,16 @@ export const approveUsers = (userIds) => async dispatch => {
         dispatch({ type: actionTypes.APPROVE_USER_SUCCESS });
     } catch (err) {
         dispatch({ type: actionTypes.APPROVE_USER_FAILURE });
+    }
+}
+
+export const addJobSite = ({ name, address, city, state, phone }) => async dispatch => {
+    dispatch({ type: actionTypes.ADD_JOBSITE });
+
+    try {
+        await jobSiteService.createJobSite({ name, address, city, state, phone });
+        dispatch({ type: actionTypes.ADD_JOBSITE_SUCCESS })
+    } catch(err) {
+        dispatch({ type: actionTypes.ADD_JOBSITE_FAILURE })
     }
 }
