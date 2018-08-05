@@ -14,11 +14,11 @@ import { FormControl } from "react-bootstrap";
 //     </div>
 // )
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
+const renderField = ({ input, label, placeholder, type, meta: { touched, error } }) => (
     <div>
-        <label>{label}</label>
+        {label && <label>{label}</label>}
         <div>
-            <FormControl {...input} placeholder={label} type={type} />
+            <FormControl {...input} placeholder={placeholder} type={type} />
             {touched && error && <span style={{ color: "red" }}>{error}</span>}
         </div>
     </div>

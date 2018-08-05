@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    group: { type: Number, required: true }
+    group: { type: Number, required: false },
+    approved: { type: Boolean, default: false }
 });
 
 userSchema.methods.fullName = function fullName() {

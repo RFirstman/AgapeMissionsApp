@@ -7,7 +7,6 @@ import * as actions from "../reducers/actions";
 
 class Header extends Component {
     renderContent() {
-        console.log(this.props.admin.loggedIn)
         switch (this.props.admin.loggedIn) {
             case true:
                 return (
@@ -61,4 +60,4 @@ function mapStateToProps({ admin }) {
     return { admin }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actions)(Header);

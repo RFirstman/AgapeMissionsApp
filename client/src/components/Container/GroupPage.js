@@ -42,7 +42,6 @@ class GroupPage extends Component {
     }
 
     render() {
-        console.log(this.state.groups)
         return (
             <div className="App">
                 <header className="App-header">

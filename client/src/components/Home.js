@@ -11,15 +11,13 @@ class Home extends Component {
             { text: "Register", route: "/register" },
             { text: 'Lunch Order', route: "/lunchorder" },
             { text: 'Groups', route: "/groups" },
-
+            { text: 'Admin Access', route: "/admin" }
         ];
         return (
             <Grid>
                 <Row>
                     <header className="App-header">
                         <img src={logo} className="img-response center-block" alt="logo" />
-                        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                        {/* <h1 className="App-title">Agape Missions</h1> */}
                     </header>
                 </Row>
                 {

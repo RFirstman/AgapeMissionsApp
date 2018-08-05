@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import adminService from "../services/adminService"
+import userService from "../services/userService";
 
 export function submitRegistration(values) {
     return {
@@ -28,4 +29,16 @@ export const adminLogin = ({email, password}) => async dispatch => {
 
 export const adminLogout = () => dispatch => {
     dispatch({ type: actionTypes.ADMIN_LOGOUT })
+}
+
+export const addUser = ({firstName, lastName }) => async dispatch => {
+    dispatch({type: actionTypes.ADD_USER});
+
+    try {
+        await userService.createUser(firstName, lastName);
+        dispatch({type: actionTypes.ADD_USER_FAILURE});
+    } catch(err) {
+        //console.log(err);
+        dispatch({type: actionTypes.ADD_USER_FAILURE})
+    }
 }

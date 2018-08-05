@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-import validate from "./validate";
+//import validate from "./validate";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
