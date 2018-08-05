@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
 import axios from "axios";
-import { Panel } from "react-bootstrap";
+import { Col, Row, Panel } from "react-bootstrap";
 
 class GroupPage extends Component {
     constructor(props) {
@@ -21,21 +21,23 @@ class GroupPage extends Component {
         if (this.state.groups) {
             return this.state.groups.map(group => {
                 return (
-                    <div>
-                        <Panel>
+                    <Row>
+                        <Panel bsStyle="primary">
                             <Panel.Heading>
                                 <Panel.Title>
-                                    <h3>Group {group.number}</h3>
+                                    <strong>Group {group.number}</strong>
                                 </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                Members:
-                                <ul>
-                                    {group.users.map(user => <li>{user.firstName + " " + user.lastName}</li>)}
-                                </ul>
+                                <Panel>
+                                    <Panel.Heading>Members</Panel.Heading>
+                                    <Panel.Body>
+                                        {group.users.map(user => <Col md={4}>{user.firstName + " " + user.lastName}</Col>)}
+                                    </Panel.Body>
+                                </Panel>
                             </Panel.Body>
                         </Panel>
-                    </div>
+                    </Row>
                 );
             })
         }
@@ -47,9 +49,9 @@ class GroupPage extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Groups</h1>
                 </header>
-                <div className="container">
+                <Col md={6} mdOffset={3}>
                     {this.renderGroups()}
-                </div>
+                </Col>
             </div>
         );
     }

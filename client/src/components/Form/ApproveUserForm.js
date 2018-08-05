@@ -4,7 +4,7 @@ import { Button, Col, Panel } from "react-bootstrap";
 import FormWrapper from "./FormWrapper";
 import listField from "./listField";
 
-class CreateGroupForm extends Component {
+class ApproveUserForm extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -77,11 +77,11 @@ class CreateGroupForm extends Component {
                     selectedIndices: this.state.selectedIndices
                 })}
                 {this.renderUsers(this.state.selectedUsers)}
-                <Button onClick={onSubmit}>Submit</Button>
+                <Button onClick={onSubmit}>Approve</Button>
             </form>
         )
     }
 }
 
 
-export default FormWrapper((CreateGroupForm), "Create Group");
+export default FormWrapper((ApproveUserForm), "Approve User");

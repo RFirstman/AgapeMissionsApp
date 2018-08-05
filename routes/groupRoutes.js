@@ -31,6 +31,11 @@ module.exports = app => {
             if (jobSiteIds) {
                 jobSites = await JobSiteModel.find({ "_id": { $in: jobSiteIds } });
             }
+            
+            if (!number) {
+                docs = await GroupModel.findMax();
+                number = docs[0].number + 1;
+            }
 
             let newGroup = new GroupModel({
                 number,

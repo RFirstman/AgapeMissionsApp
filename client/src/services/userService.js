@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const userService = {
     createUser,
-    getUsers
+    getUsers,
+    approveUsers
 }
 
 export default userService;
@@ -20,4 +21,12 @@ async function getUsers() {
     if (response.status === 200) {
         return response.data;
     }
+}
+
+async function approveUsers(userIds) {
+    let response = await axios.put("/api/users", { userIds });
+    if (response.status === 200) {
+        return Promise.resolve("Users approved successfully")
+    }
+    return Promise.reject("Unable to approve users")
 }
