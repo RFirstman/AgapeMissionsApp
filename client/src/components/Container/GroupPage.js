@@ -22,17 +22,19 @@ class GroupPage extends Component {
             return this.state.groups.map(group => {
                 return (
                     <Row>
-                        <Panel>
+                        <Panel bsStyle="primary">
                             <Panel.Heading>
                                 <Panel.Title>
                                     <strong>Group {group.number}</strong>
                                 </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                Members:
-                                <ul>
-                                    {group.users.map(user => <li>{user.firstName + " " + user.lastName}</li>)}
-                                </ul>
+                                <Panel>
+                                    <Panel.Heading>Members</Panel.Heading>
+                                    <Panel.Body>
+                                        {group.users.map(user => <Col md={4}>{user.firstName + " " + user.lastName}</Col>)}
+                                    </Panel.Body>
+                                </Panel>
                             </Panel.Body>
                         </Panel>
                     </Row>
