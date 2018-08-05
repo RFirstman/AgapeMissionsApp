@@ -68,7 +68,11 @@ class AdminPage extends Component {
                         }}/>
                     </Tab>
                     <Tab eventKey="approveUser" title="Approve Users">
-                        <ApproveUserForm onSubmit={console.log} users={this.state.unapprovedUsers}/>
+                        <ApproveUserForm handleSubmit={userIds => {
+                            this.props.approveUsers(userIds);
+                            this.updateUserList()
+                        }} 
+                        users={this.state.unapprovedUsers}/>
                     </Tab>
                     <Button onClick={this.props.adminLogout}>Log Out</Button>
                 </Tabs>

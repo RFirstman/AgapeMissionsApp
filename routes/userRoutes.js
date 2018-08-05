@@ -38,6 +38,23 @@ module.exports = app => {
             });
     });
 
+    // Update multiple users
+    app.put("/api/users", async (req, res, next) => {
+        let { userIds } = req.body
+
+        try {
+            let promises = userIds.map(id => (
+                UserModel.findByIdAndUpdate(id, {
+                    approved: true
+                })
+            ));
+            await Promise.all(promises);
+            res.send("Users approved successfully")
+        } catch(err) {
+            next(err);
+        }
+    })
+
     // Update an existing user
     app.put("/api/users/:id", async (req, res, next) => {
         let userId = req.params.id;

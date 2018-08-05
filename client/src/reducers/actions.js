@@ -54,3 +54,14 @@ export const addGroup = (userIds, jobSiteIds, number) => async dispatch => {
         dispatch({ type: actionTypes.ADD_GROUP_FAILURE });
     }
 }
+
+export const approveUsers = (userIds) => async dispatch => {
+    dispatch({ type: actionTypes.APPROVE_USER });
+
+    try {
+        await userService.approveUsers(userIds);
+        dispatch({ type: actionTypes.APPROVE_USER_SUCCESS });
+    } catch (err) {
+        dispatch({ type: actionTypes.APPROVE_USER_FAILURE });
+    }
+}
