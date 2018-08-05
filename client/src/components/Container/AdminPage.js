@@ -7,26 +7,44 @@ import * as actions from "../../reducers/actions";
 import UserForm from "../Form/UserForm";
 import userService from "../../services/userService";
 import CreateGroupForm from "../Form/CreateGroupForm";
+import ApproveUserForm from "../Form/ApproveUserForm";
 
 class AdminPage extends Component {
-    state = {
-        users: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            approvedUsers: [],
+            unapprovedUsers: []
+        }
+        this.updateUserList = this.updateUserList.bind(this);
+    }
+    
+
+    componentDidMount() {
+        this.updateUserList();
     }
 
-    async componentDidMount() {
+    async updateUserList() {
         let users = await userService.getUsers();
+        let approvedUsers = []
+        let unapprovedUsers = []
         if (users && users.length) {
-            users = users.reduce((result, user) => {
+            users.forEach(user => {
                 if (user.approved) {
-                    result.push({
+                    approvedUsers.push({
                         text: user.firstName + " " + user.lastName,
                         ...user
-                    });
+                    })
+                } else {
+                    unapprovedUsers.push({
+                        text: user.firstName + " " + user.lastName,
+                        ...user
+                    })
                 }
-                return result;
-            }, [])
+            })
         }
-        this.setState({ users })
+        this.setState({ users, approvedUsers, unapprovedUsers })
     }
 
     renderContent() {
@@ -35,7 +53,7 @@ class AdminPage extends Component {
                 <Tabs id="Admin">
                     <Tab eventKey="createGroup" title="Create Group">
                         {/* <GroupForm /> */}
-                        <CreateGroupForm users={this.state.users} handleSubmit={this.props.addGroup} />
+                        <CreateGroupForm users={this.state.approvedUsers} handleSubmit={this.props.addGroup} />
                     </Tab>
                     <Tab eventKey="editGroup" title="Edit Group" disabled>
                     </Tab>
@@ -44,7 +62,13 @@ class AdminPage extends Component {
                     <Tab eventKey="editJobSite" title="Edit Job Site" disabled>
                     </Tab>
                     <Tab eventKey="addUser" title="Add User">
-                        <UserForm onSubmit={this.props.addUser} />
+                        <UserForm onSubmit={({firstName, lastName}) => {
+                            this.props.addUser({firstName, lastName});
+                            this.updateUserList()
+                        }}/>
+                    </Tab>
+                    <Tab eventKey="approveUser" title="Approve Users">
+                        <ApproveUserForm onSubmit={console.log} users={this.state.unapprovedUsers}/>
                     </Tab>
                     <Button onClick={this.props.adminLogout}>Log Out</Button>
                 </Tabs>
