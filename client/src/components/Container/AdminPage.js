@@ -15,9 +15,18 @@ class AdminPage extends Component {
 
     async componentDidMount() {
         let users = await userService.getUsers();
-        if (users) {
-            this.setState({ users })
+        if (users && users.length) {
+            users = users.reduce((result, user) => {
+                if (user.approved) {
+                    result.push({
+                        text: user.firstName + " " + user.lastName,
+                        ...user
+                    });
+                }
+                return result;
+            }, [])
         }
+        this.setState({ users })
     }
 
     renderContent() {
@@ -26,7 +35,7 @@ class AdminPage extends Component {
                 <Tabs id="Admin">
                     <Tab eventKey="createGroup" title="Create Group">
                         {/* <GroupForm /> */}
-                        <CreateGroupForm users={this.state.users}/>
+                        <CreateGroupForm users={this.state.users} />
                     </Tab>
                     <Tab eventKey="editGroup" title="Edit Group" disabled>
                     </Tab>

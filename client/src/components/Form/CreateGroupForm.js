@@ -1,34 +1,39 @@
-import React from "react";
-import { Field, reduxForm } from 'redux-form';
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { Field, reduxForm, change } from 'redux-form';
 import { Button, ListGroup, ListGroupItem, Col, Row } from "react-bootstrap";
 
 import renderField from "./renderField";
 import FormWrapper from "./FormWrapper";
+import listField from "./listField";
 
-function onChange(index) {
-    console.log(index)
+class CreateGroupForm extends Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.selectedUsers = []
+    }
+
+    handleChange(index) {
+        this.selectedUsers.push(this.props.users[index].text)
+        this.props.change("selectedUsers", this.selectedUsers.join(", "))
+    }
+
+    render() {
+        let { users, onChange, handleSubmit, pristine, reset, submitting } = this.props;
+        return (
+            <form>
+                <Field name="users" component={listField} items={users} onSelect={this.handleChange} />
+                <Field name="selectedUsers" type="text" component={renderField}/>
+            </form>
+        )
+    }
 }
 
-function renderUsers(users) {
-    const userList = users.map((user, index) => {
-        if (user.approved) {
-            return (
-                <ListGroupItem key={index} onClick={() => onChange(index)}>
-                    {user.firstName + " " + user.lastName}
-                </ListGroupItem>
-            );
-        }
-    });
-
-    return userList
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ change }, dispatch)
 }
 
-function CreateGroupForm({ users, onChange, handleSubmit, pristine, reset, submitting }) {
-    return (
-        <ListGroup>
-            {renderUsers(users)}
-        </ListGroup>
-    )
-}
-
-export default CreateGroupForm;
+export default FormWrapper(reduxForm({
+    form: "group"
+}, null, mapDispatchToProps)(CreateGroupForm), "Create Group");
