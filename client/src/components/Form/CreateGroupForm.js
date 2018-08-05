@@ -5,11 +5,15 @@ import { Button, ListGroup, ListGroupItem, Col, Row } from "react-bootstrap";
 import renderField from "./renderField";
 import FormWrapper from "./FormWrapper";
 
+function onChange(index) {
+    console.log(index)
+}
+
 function renderUsers(users) {
     const userList = users.map((user, index) => {
         if (user.approved) {
             return (
-                <ListGroupItem key={index} onClick={() => console.log(user)}>
+                <ListGroupItem key={index} onClick={() => onChange(index)}>
                     {user.firstName + " " + user.lastName}
                 </ListGroupItem>
             );
