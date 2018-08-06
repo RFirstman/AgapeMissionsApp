@@ -2,6 +2,16 @@
 
 ### _Note: This is a work in progress_
 
+**Table of Contents**
+
+[Description](#Description)
+
+[Sample Images](#Sample-Images)
+
+[How to run the app locally](#Running-the-app-locally)
+
+## Description
+
 A full stack web application created for Agape Missions, my friend's non-profit.
 
 This application was built using Node.js/Express/MongoDB for the back end
@@ -11,23 +21,23 @@ and React.js with Bootstrap for the front end.
 
 Home Page
 
-![Home Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/home.png, "Home Page")
+![Home Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/home.png "Home Page")
 
 Group Form (Admin Only)
 
-![Group Form](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/groupForm.png, "Group Form")
+![Group Form](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/groupForm.png "Group Form")
 
 Job Site Form (Admin Only)
 
-![Job Site Form](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/jobSiteForm.png, "Job Site Form")
+![Job Site Form](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/jobSiteForm.png "Job Site Form")
 
 Group Page
 
-![Group Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/groupPage.png, "Group Page")
+![Group Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/groupPage.png "Group Page")
 
 Job Site Page
 
-![Job Site Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/jobSitePage.png, "Job Site Page")
+![Job Site Page](https://github.com/RFirstman/AgapeMissionsApp/raw/master/img/jobSitePage.png "Job Site Page")
 
 ## Running the app locally
 
