@@ -1,6 +1,9 @@
 import { ADMIN_LOGIN_REQUEST, ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAILURE, ADMIN_LOGOUT } from "./actionTypes";
 
 const initialState = { loggedIn: false, loggingIn: false }
+if (process.env.NODE_ENV !== "production") {
+    initialState.loggedIn = true;
+}
 
 export default function adminReducer(state = initialState, action) {
     switch (action.type) {

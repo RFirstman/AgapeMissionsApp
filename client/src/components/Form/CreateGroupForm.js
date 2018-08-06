@@ -7,10 +7,13 @@ import listField from "./listField";
 class CreateGroupForm extends Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleUserChange = this.handleUserChange.bind(this);
+        this.handleJobSiteChange = this.handleJobSiteChange.bind(this);
         this.state = {
             selectedUsers: [],  // contains names of selected users
-            selectedIndices: [] // contains indices of selected users
+            selectedUserIndices: [], // contains indices of selected users
+            selectedJobSites: [],
+            selectedSiteIndices: []
         }
     }
 
@@ -21,33 +24,44 @@ class CreateGroupForm extends Component {
         return [...prevIndices, index];
     }
 
-    toggleSelectedUser(indices) {
-        let newUsers = []
-        this.props.users.forEach((user, index) => {
+    toggleSelected(items, indices) {
+        let result = []
+        items.forEach((item, index) => {
             if (indices.includes(index)) {
-                newUsers.push(user.text)
+                result.push(item.text)
             }
         })
-        return newUsers;
+        return result;
     }
 
-    handleChange(index) {
-        let prevIndices = this.state.selectedIndices;
-        let selectedIndices = this.toggleActive(prevIndices, index);
-        let selectedUsers = this.toggleSelectedUser(selectedIndices);
+    handleUserChange(index) {
+        let prevIndices = this.state.selectedUserIndices;
+        let selectedUserIndices = this.toggleActive(prevIndices, index);
+        let selectedUsers = this.toggleSelected(this.props.users, selectedUserIndices);
 
         this.setState({
-            selectedIndices,
+            selectedUserIndices,
             selectedUsers
         });
     }
 
-    renderUsers(users) {
+    handleJobSiteChange(index) {
+        let prevIndices = this.state.selectedSiteIndices;
+        let selectedSiteIndices = this.toggleActive(prevIndices, index);
+        let selectedJobSites = this.toggleSelected(this.props.jobSites, selectedSiteIndices);
+
+        this.setState({
+            selectedSiteIndices,
+            selectedJobSites
+        });
+    }
+
+    renderSelected(items, heading) {
         return (
             <Panel bsStyle="info">
-                <Panel.Heading>Selected Users</Panel.Heading>
+                <Panel.Heading>{heading}</Panel.Heading>
                 <Panel.Body>
-                    {users.map((text, index) => (
+                    {items.map((text, index) => (
                         <Col key={index} md={4}>
                             {text}
                         </Col>
@@ -57,26 +71,38 @@ class CreateGroupForm extends Component {
         );
     }
 
-
     render() {
-        let { users, handleSubmit } = this.props;
+        let { users, jobSites, handleSubmit } = this.props;
+        
         const onSubmit = () => {
             let userIds = []
             this.props.users.map((user, index) => {
-                if (this.state.selectedIndices.includes(index)) {
+                if (this.state.selectedUserIndices.includes(index)) {
                     userIds.push(user._id);
                 }
             })
-            handleSubmit(userIds)
+            let jobSiteIds = []
+            this.props.jobSites.map((jobSite, index) => {
+                if (this.state.selectedSiteIndices.includes(index)) {
+                    jobSiteIds.push(jobSite._id)
+                }
+            });
+            handleSubmit(userIds, jobSiteIds);
         }
         return (
             <form>
                 {listField({
                     items: users,
-                    onSelect: this.handleChange,
-                    selectedIndices: this.state.selectedIndices
+                    onSelect: this.handleUserChange,
+                    selectedIndices: this.state.selectedUserIndices
                 })}
-                {this.renderUsers(this.state.selectedUsers)}
+                {this.renderSelected(this.state.selectedUsers, "Selected Users")}
+                {listField({
+                    items: jobSites,
+                    onSelect: this.handleJobSiteChange,
+                    selectedIndices: this.state.selectedSiteIndices
+                })}
+                {this.renderSelected(this.state.selectedJobSites, "Selected Job Sites")}
                 <Button onClick={onSubmit}>Submit</Button>
             </form>
         )

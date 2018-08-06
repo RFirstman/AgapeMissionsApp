@@ -9,6 +9,7 @@ import userService from "../../services/userService";
 import CreateGroupForm from "../Form/CreateGroupForm";
 import ApproveUserForm from "../Form/ApproveUserForm";
 import JobSiteForm from "../Form/JobSiteForm";
+import { jobSiteService } from "../../services/jobSiteService";
 
 class AdminPage extends Component {
     constructor(props) {
@@ -16,14 +17,17 @@ class AdminPage extends Component {
         this.state = {
             users: [],
             approvedUsers: [],
-            unapprovedUsers: []
+            unapprovedUsers: [],
+            jobSites: []
         }
         this.updateUserList = this.updateUserList.bind(this);
+        this.updateJobSiteList = this.updateJobSiteList.bind(this);
     }
     
 
     componentDidMount() {
         this.updateUserList();
+        this.updateJobSiteList();
     }
 
     async updateUserList() {
@@ -48,13 +52,27 @@ class AdminPage extends Component {
         this.setState({ users, approvedUsers, unapprovedUsers })
     }
 
+    async updateJobSiteList() {
+        let jobSiteRes = await jobSiteService.getJobSites();
+        let jobSites = []
+        if (jobSiteRes && jobSiteRes.length) {
+            jobSiteRes.forEach(jobSite => {
+                jobSites.push({
+                    text: `${jobSite.city}: ${jobSite.name}`,
+                    ...jobSite
+                });
+            });
+        }
+        this.setState({ jobSites });
+    }
+
     renderContent() {
         if (this.props.loggedIn) {
             return (
                 <Tabs id="Admin">
                     <Tab eventKey="createGroup" title="Create Group">
                         {/* <GroupForm /> */}
-                        <CreateGroupForm users={this.state.approvedUsers} handleSubmit={this.props.addGroup} />
+                        <CreateGroupForm users={this.state.approvedUsers} jobSites={this.state.jobSites} handleSubmit={this.props.addGroup} />
                     </Tab>
                     <Tab eventKey="editGroup" title="Edit Group" disabled>
                     </Tab>
