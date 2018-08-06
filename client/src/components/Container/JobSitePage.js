@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
 import axios from "axios";
-import { Col, Row, Panel } from "react-bootstrap";
+import { Col, Grid, Row, Panel, Jumbotron } from "react-bootstrap";
 
 const formatPhone = (number) => {
     let stripped = number.replace(/[\W_]+/g, "");
@@ -59,14 +59,14 @@ class JobSitePage extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">JobSites</h1>
-                </header>
+            <Grid>
+                <Jumbotron className="App-Jumbotron">
+                    <p>JobSites</p>
+                </Jumbotron>
                 <Col md={8} mdOffset={2}>
                     {this.renderJobSites()}
                 </Col>
-            </div>
+            </Grid>
         );
     }
 }

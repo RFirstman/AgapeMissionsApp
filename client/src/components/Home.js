@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Col, Grid, Image, Row } from "react-bootstrap";
+import { Button, Col, Grid, Jumbotron, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
@@ -17,14 +17,14 @@ class Home extends Component {
         return (
             <Grid>
                 <Row>
-                    <header className="App-header">
+                    <Jumbotron className="App-header">
                         <img src={logo} className="img-response center-block" alt="logo" />
-                    </header>
+                    </Jumbotron>
                 </Row>
                 {
                     buttonConfigs.map((buttonConfig, index) => (
                         <Row key={index}>
-                            <Col xs={6} xsOffset={3}>
+                            <Col s={10} sOffset={1} md={6} mdOffset={3}>
                                 <Link to={buttonConfig.route}>
                                     <Button block>{buttonConfig.text}</Button>
                                 </Link>

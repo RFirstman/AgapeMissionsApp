@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 import LunchOrderForm from "../Form/LunchOrderForm";
 import { connect } from "react-redux";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Grid, Jumbotron } from "react-bootstrap";
 
 import { submitLunchOrder } from "../../reducers/actions";
 
 class LunchOrderPage extends Component {
     render() {
         return (
-            <div>
+            <Grid>
                 <Row>
-                    <header className="App-header">
-                        <h1 className="App-title">Lunch Order</h1>
-                    </header>
+                    <Jumbotron className="App-Jumbotron">
+                        <p>Lunch Order</p>
+                    </Jumbotron>
                 </Row>
                 <Row>
                     <Col md={6} mdOffset={3}>
                         <LunchOrderForm onSubmit={this.props.onSubmit} />
                     </Col>
                 </Row>
-            </div>
+            </Grid>
         );
     }
 }

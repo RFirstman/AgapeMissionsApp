@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
 import axios from "axios";
-import { Col, Row, Panel } from "react-bootstrap";
+import { Col, Grid, Row, Panel, Jumbotron } from "react-bootstrap";
 
 class GroupPage extends Component {
     constructor(props) {
@@ -45,14 +45,14 @@ class GroupPage extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Groups</h1>
-                </header>
+            <Grid>
+                <Jumbotron className="App-Jumbotron">
+                    <p>Groups</p>
+                </Jumbotron>
                 <Col md={8} mdOffset={2}>
                     {this.renderGroups()}
                 </Col>
-            </div>
+            </Grid>
         );
     }
 }
