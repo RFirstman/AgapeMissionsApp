@@ -11,6 +11,7 @@ class Home extends Component {
             { text: "Register", route: "/register" },
             { text: 'Lunch Order', route: "/lunchorder" },
             { text: 'Groups', route: "/groups" },
+            { text: "Job Sites", route: "/jobSites" },
             { text: 'Admin Access', route: "/admin" }
         ];
         return (
