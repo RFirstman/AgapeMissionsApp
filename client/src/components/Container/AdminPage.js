@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Grid, Col, Row, Tabs, Tab, Jumbotron } from "react-bootstrap";
+import { Button, Grid, Col, Row, Tabs, Tab, PageHeader } from "react-bootstrap";
 
 import AdminLoginForm from "../Form/AdminLoginForm";
 import * as actions from "../../reducers/actions";
@@ -84,13 +84,15 @@ class AdminPage extends Component {
     }
 
     render() {
-        // actions.addUser({ firstName: "Rob", lastName: "Firstman" })
         return (
             <Grid>
                 <Row>
-                    <Jumbotron className="App-Jumbotron">
+                    {/* <Jumbotron className="App-Jumbotron">
                         <p>Administrator Access</p>
-                    </Jumbotron>
+                    </Jumbotron> */}
+                    <Col md={8} mdOffset={2}>
+                        <PageHeader>Administrator Access</PageHeader>
+                    </Col>
                 </Row>
                 <Row>
                     <Col md={8} mdOffset={2}>

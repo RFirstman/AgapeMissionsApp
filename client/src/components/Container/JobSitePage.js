@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
 import axios from "axios";
-import { Col, Grid, Row, Panel, Jumbotron } from "react-bootstrap";
+import { Col, Grid, Row, Panel, PageHeader, PanelGroup } from "react-bootstrap";
 
 const formatPhone = (number) => {
     let stripped = number.replace(/[\W_]+/g, "");
@@ -27,31 +27,29 @@ class JobSitePage extends Component {
 
     renderJobSites() {
         if (this.state.jobSites) {
-            return this.state.jobSites.map(jobSite => {
+            return this.state.jobSites.map((jobSite, index) => {
                 let { name, state, address, city, phone, zip } = jobSite;
                 return (
-                    <Row>
-                        <Panel bsStyle="primary">
-                            <Panel.Heading>
-                                <Panel.Title>
-                                    <strong>{name}</strong>
-                                </Panel.Title>
-                            </Panel.Heading>
-                            <Panel.Body>
-                                <Panel>
-                                    <Panel.Heading>Members</Panel.Heading>
-                                    <Panel.Body>
-                                        <Row>
-                                            {formatPhone(phone)}
-                                        </Row>
-                                        <Row>
-                                            {formatAddress(address, city, state, zip)}
-                                        </Row>
-                                    </Panel.Body>
-                                </Panel>
-                            </Panel.Body>
-                        </Panel>
-                    </Row>
+                    <Panel eventKey={index}>
+                        <Panel.Heading>
+                            <Panel.Title toggle>
+                                <strong>{name}</strong>
+                            </Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Body collapsible>
+                            <Panel>
+                                <Panel.Heading>Members</Panel.Heading>
+                                <Panel.Body>
+                                    <Row>
+                                        {formatPhone(phone)}
+                                    </Row>
+                                    <Row>
+                                        {formatAddress(address, city, state, zip)}
+                                    </Row>
+                                </Panel.Body>
+                            </Panel>
+                        </Panel.Body>
+                    </Panel>
                 );
             })
         }
@@ -60,11 +58,16 @@ class JobSitePage extends Component {
     render() {
         return (
             <Grid>
-                <Jumbotron className="App-Jumbotron">
-                    <p>JobSites</p>
-                </Jumbotron>
+                {/* <Jumbotron className="App-Jumbotron">
+                    <p>Job Sites</p>
+                </Jumbotron> */}
                 <Col md={8} mdOffset={2}>
-                    {this.renderJobSites()}
+                    <PageHeader>Job Sites</PageHeader>
+                </Col>
+                <Col md={8} mdOffset={2}>
+                    <PanelGroup accordion>
+                        {this.renderJobSites()}
+                    </PanelGroup>
                 </Col>
             </Grid>
         );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import RegisterForm from "../Form/Register/RegisterForm";
 import { connect } from "react-redux";
-import { Grid, Jumbotron } from "react-bootstrap";
+import { Col, Grid, PageHeader } from "react-bootstrap";
 
 import { submitRegistration } from "../../reducers/actions";
 
@@ -9,10 +9,12 @@ class RegisterPage extends Component {
     render() {
         return (
             <Grid>
-                <Jumbotron className="App-header">
-                    <p>Register</p>
-                </Jumbotron>
-                <RegisterForm onSubmit={this.props.onSubmit} />
+                <Col md={8} mdOffset={2}>
+                    <PageHeader>Register</PageHeader>
+                </Col>
+                <Col md={8} mdOffset={2}>
+                    <RegisterForm onSubmit={this.props.onSubmit} />
+                </Col>
             </Grid>
         );
     }
@@ -20,6 +22,6 @@ class RegisterPage extends Component {
 
 const mapDispatchToProps = dispatch => ({
     onSubmit: (values) => dispatch(submitRegistration(values))
-}); 
+});
 
 export default connect(null, mapDispatchToProps)(RegisterPage);
