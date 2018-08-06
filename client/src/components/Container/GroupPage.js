@@ -17,6 +17,13 @@ class GroupPage extends Component {
         this.setState({ groups: groupRes.data });
     }
 
+    renderJobSites(jobSites) {
+        if (!jobSites || !jobSites.length || !jobSites.length < 0) {
+            return <Col md={4} mdOffset={4}>No job sites assigned</Col>
+        }
+        return jobSites.map(jobSite => <Col md={4}>{`${jobSite.city}: ${jobSite.name}`}</Col>)
+    }
+
     renderGroups() {
         if (this.state.groups) {
             return this.state.groups.map((group, index) => {
@@ -31,7 +38,13 @@ class GroupPage extends Component {
                             <Panel>
                                 <Panel.Heading>Members</Panel.Heading>
                                 <Panel.Body>
-                                    {group.users.map(user => <Col md={4}>{user.firstName + " " + user.lastName}</Col>)}
+                                    {group.users.map(user => <Col md={4}>{`${user.firstName} ${user.lastName}`}</Col>)}
+                                </Panel.Body>
+                            </Panel>
+                            <Panel>
+                                <Panel.Heading>Job Sites</Panel.Heading>
+                                <Panel.Body>
+                                    {this.renderJobSites(group.jobSites)}
                                 </Panel.Body>
                             </Panel>
                         </Panel.Body>
