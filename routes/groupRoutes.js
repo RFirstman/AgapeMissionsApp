@@ -34,7 +34,11 @@ module.exports = app => {
             
             if (!number) {
                 docs = await GroupModel.findMax();
-                number = docs[0].number + 1;
+                if (docs) {
+                    number = 1
+                } else {
+                    number = docs[0].number + 1;
+                }
             }
 
             let newGroup = new GroupModel({
