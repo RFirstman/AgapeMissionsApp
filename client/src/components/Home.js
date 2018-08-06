@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Col, Grid, Jumbotron, Row } from "react-bootstrap";
+import { Button, Col, Grid, Jumbotron, Row, ResponsiveEmbed } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
@@ -16,11 +16,11 @@ class Home extends Component {
         ];
         return (
             <Grid>
-                <Row>
-                    <Jumbotron className="App-header">
-                        <img src={logo} className="img-response center-block" alt="logo" />
-                    </Jumbotron>
-                </Row>
+                <Jumbotron className="App-header center-block" style={{maxHeight: 200}}>
+                    <ResponsiveEmbed a16by9 style={{ flex: 1, width: null, height: null, maxHeight: 175,resizeMode: "contain" }}>
+                        <embed src={logo} type="image/svg+xml" />
+                    </ResponsiveEmbed>
+                </Jumbotron>
                 {
                     buttonConfigs.map((buttonConfig, index) => (
                         <Row key={index}>
