@@ -67,11 +67,11 @@ export const approveUsers = (userIds) => async dispatch => {
     }
 }
 
-export const addJobSite = ({ name, address, city, state, phone }) => async dispatch => {
+export const addJobSite = ({ name, address, city, state, zip, phone }) => async dispatch => {
     dispatch({ type: actionTypes.ADD_JOBSITE });
-
+    
     try {
-        await jobSiteService.createJobSite({ name, address, city, state, phone });
+        await jobSiteService.createJobSite({ name, address, city, state, zip, phone: phone.replace(/\D/g, "")});
         dispatch({ type: actionTypes.ADD_JOBSITE_SUCCESS })
     } catch(err) {
         dispatch({ type: actionTypes.ADD_JOBSITE_FAILURE })

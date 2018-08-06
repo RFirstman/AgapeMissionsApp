@@ -21,7 +21,7 @@ module.exports = app => {
 
     // Create a new job site
     app.post("/api/jobSites", async (req, res, next) => {
-        let { name, address, city, state, phone } = req.body;
+        let { name, address, city, state, phone, zip } = req.body;
 
         try {
             const newJobSite = new JobSiteModel({
@@ -29,7 +29,8 @@ module.exports = app => {
                 address,
                 city,
                 state,
-                phone
+                phone,
+                zip
             });
 
             await newJobSite.save();

@@ -37,17 +37,12 @@ class JobSitePage extends Component {
                             </Panel.Title>
                         </Panel.Heading>
                         <Panel.Body collapsible>
-                            <Panel>
-                                <Panel.Heading>Members</Panel.Heading>
-                                <Panel.Body>
-                                    <Row>
-                                        {formatPhone(phone)}
-                                    </Row>
-                                    <Row>
-                                        {formatAddress(address, city, state, zip)}
-                                    </Row>
-                                </Panel.Body>
-                            </Panel>
+                            <Row>
+                                {formatPhone(phone)}
+                            </Row>
+                            <Row>
+                                {formatAddress(address, city, state, zip)}
+                            </Row>
                         </Panel.Body>
                     </Panel>
                 );

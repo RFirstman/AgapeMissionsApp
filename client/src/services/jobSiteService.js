@@ -7,8 +7,8 @@ export const jobSiteService = {
 
 export default jobSiteService;
 
-async function createJobSite({ name, address, city, state, phone }) {
-    let response = await axios.post("/api/jobSites", { name, address, city, state, phone });
+async function createJobSite({ name, address, city, state, zip, phone }) {
+    let response = await axios.post("/api/jobSites", { name, address, city, state, zip, phone });
     if (response.status === 200) {
         return Promise.resolve("Group created successfully");
     }
