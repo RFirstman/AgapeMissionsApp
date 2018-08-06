@@ -4,11 +4,11 @@
 
 **Table of Contents**
 
-[Description](#Description)
+[Description](#description)
 
-[Sample Images](#Sample-Images)
+[Sample Images](#sample-images)
 
-[How to run the app locally](#Running-the-app-locally)
+[How to run the app locally](#running-the-app-locally)
 
 ## Description
 
